@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        th, td {
+            border: 1px solid black;
+        }
+        span, a {
+			text-decoration: none;
+		}
+    </style>
+</head>
+<body>
+    <form th:action="@{/search}" method="post">
+        <input type="text" name="keyword" />
+        <input type="submit" value="검색" />
+    </form>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        <tr th:each="notice : ${list}">
+            <td th:text="${notice.num}"></td>
+            <td><a th:href="@{/hitUpdate(num=${notice.num})}" th:text="${notice.title}"></td>
+            <td th:text="${notice.s_date}"></td>
+            <td th:text="${notice.hit}"></td>
+        </tr>
+        <tr>
+			<th colspan="4">
+				<a th:href="@{/list(pageNum=${num})}" th:each="num : ${#numbers.sequence(1, totalPage)}"> [<span th:text="${num}"></span>] </a>
+			</th>
+		</tr>
+    </table>
+    <a th:href="@{/insertForm}">새 글 작성</a>
+</body>
+</html>

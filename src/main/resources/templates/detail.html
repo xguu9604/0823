@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>제목</th>
+            <td th:text="${notice.title}"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td th:text="${notice.info}"></td>
+        </tr>
+        <tr>
+            <th>작성일</th>
+            <td th:text="${notice.s_date}"></td>
+        </tr>
+        <tr>
+            <th>조회수</th>
+            <td th:text="${notice.hit}"></td>
+        </tr>
+    </table>
+    <p></p>
+    <a th:href="@{/list}">목록</a>
+    <a th:href="@{/updateForm(num=${notice.num})}">수정</a>
+    <a th:href="@{/delete(num=${notice.num})}">삭제</a>
+    
+</body>
+</html>
